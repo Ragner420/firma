@@ -8,8 +8,9 @@
     body { font-family: Arial, sans-serif; padding: 1rem; background: #f4f4f4; }
     h1 { text-align: center; }
     .project { background: #fff; padding: 1rem; border-radius: 10px; margin-bottom: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .task { display: flex; align-items: center; margin: 0.25rem 0; }
-    .task input[type=checkbox] { margin-right: 0.5rem; }
+    .task { display: flex; justify-content: space-between; align-items: center; margin: 0.25rem 0; }
+    .task span { flex: 1; text-align: left; }
+    .task input[type=checkbox] { margin-left: 1rem; }
     button { margin-top: 0.5rem; padding: 0.3rem 0.8rem; }
     input, textarea { width: 100%; margin: 0.3rem 0; padding: 0.4rem; }
   </style>
@@ -44,7 +45,7 @@ function renderProjects() {
       const taskDiv = document.createElement('div');
       taskDiv.className = 'task';
       const checked = task.done ? 'checked' : '';
-      taskDiv.innerHTML = `<input type="checkbox" ${checked} onchange="toggleTask(${index}, ${tIndex})"> ${task.name}`;
+      taskDiv.innerHTML = `<span>${task.name}</span><input type="checkbox" ${checked} onchange="toggleTask(${index}, ${tIndex})">`;
       div.appendChild(taskDiv);
     });
     container.appendChild(div);
